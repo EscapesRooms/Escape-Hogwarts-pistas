@@ -310,44 +310,40 @@ return texto
 
 }
 
-function comprobar(){
+function comprobar() {
+  // 1) Leemos el texto que ha escrito el usuario en el input
+  const valor = document.getElementById("respuesta").value;
 
-const valor =
-document.getElementById("respuesta").value;
+  // 2) Comparamos la respuesta introducida con la respuesta correcta
+  //    normalizando mayúsculas, tildes, espacios y otros caracteres
+  if (normalizar(valor) === normalizar(datos.respuesta)) {
 
-if(
-normalizar(valor) ===
-normalizar(datos.respuesta)
-){
+    // Si la respuesta es correcta:
+    document.getElementById("resultado").className = "correcto";
 
-document.getElementById("resultado")
-.className="correcto";
+    // 3) Solo en la pista 0 ocultamos el texto:
+    //    "La magia ha revelado algo:"
+    //    En el resto de pistas se mantiene el mensaje completo
+    if (parametro === "0") {
+      document.getElementById("resultado").innerHTML =
+        "✅ Correcto.<br><br><strong>" +
+        datos.destino +
+        "</strong>";
+    } else {
+      document.getElementById("resultado").innerHTML =
+        "✅ Correcto.<br><br>⚡ La magia ha revelado algo:<br><br><strong>" +
+        datos.destino +
+        "</strong>";
+    }
 
-document.getElementById("resultado")
-.innerHTML=
-"✅ Correcto.<br><br>⚡ La magia ha revelado algo:<br><br><strong>"
-+
-datos.destino
-+
-"</strong>";
+    // 4) Salimos de la función para no seguir ejecutando más
+    return;
+  }
 
-return;
-}
-
-document.getElementById("resultado")
-.className="incorrecto";
-
-document.getElementById("resultado")
-.innerHTML=
-"❌ La respuesta no parece correcta. Inténtalo de nuevo.";
-
-}
-
-function mostrarAyuda(){
-
-document.getElementById("ayuda")
-.style.display="block";
-
+  // 5) Si la respuesta no coincide:
+  document.getElementById("resultado").className = "incorrecto";
+  document.getElementById("resultado").innerHTML =
+    "❌ La respuesta no parece correcta. Inténtalo de nuevo.";
 }
 
 const music=document.getElementById("music");
