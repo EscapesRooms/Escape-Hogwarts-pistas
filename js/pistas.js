@@ -106,7 +106,7 @@ destino:"CADA"
 },
 
 3:{
-titulo:"🚇 La Estación Perdida 🚇",
+titulo:"🚇 Andén 9 y 3/4 🚇",
 
 texto:`
 No soy una persona,
@@ -169,7 +169,7 @@ ayuda:`
 
 <br><br>
 
-Puedes bañarte si quieres.
+El agua corre por ellas.
 `,
 
 respuesta:"fuentes via julia",
