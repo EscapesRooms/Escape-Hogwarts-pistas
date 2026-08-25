@@ -1,98 +1,125 @@
 /* ==================================================
-   CONFIGURACIÓN GENERAL
+   ESTILOS GENERALES
    ================================================== */
-body{
-    background:#111;
-    color:#d4af37;
-    font-family:'Cinzel',serif;
-    text-align:center;
-    padding:20px;
+body {
+    background: #111;
+    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    padding: 20px;
 }
 
-.contenedor{
-    max-width:800px;
-    margin:auto;
-    padding:25px;
-    border:2px solid #d4af37;
-    background:#1a1a1a;
-    border-radius:10px;
+.contenedor {
+    max-width: 800px;
+    margin: auto;
+    padding: 25px;
+    border: 2px solid #d4af37;
+    background: #1a1a1a;
+    border-radius: 10px;
 }
 
-.logo{
-    width:140px;
-    display:block;
-    margin:auto;
+/* ==================================================
+   LOGO Y TÍTULOS
+   ================================================== */
+.logo {
+    width: 140px;
+    display: block;
+    margin: auto;
 }
 
-h1{
-    margin-top:20px;
+h1 {
+    margin-top: 20px;
 }
 
-#texto{
-    margin-top:20px;
-    font-size:22px;
-    line-height:1.8;
+/* ==================================================
+   CONTENIDO DE LA PISTA
+   ================================================== */
+#texto {
+    margin-top: 20px;
+    font-size: 22px;
+    line-height: 1.8;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin-top:20px;
-    border:none;
-    border-radius:5px;
-    font-size:18px;
-    text-align:center;
+/* ==================================================
+   INPUT Y BOTONES
+   ================================================== */
+/* Ajuste clave: igualamos el ancho real del input con los botones */
+input,
+button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    background:#d4af37;
-    border:none;
-    cursor:pointer;
-    border-radius:5px;
-    font-size:16px;
-    font-weight:bold;
+input {
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    min-height: 48px;
 }
 
-button:hover{
-    background:#f0c75d;
+button {
+    padding: 12px;
+    margin-top: 10px;
+    background: #d4af37;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 48px;
 }
 
-#resultado{
-    margin-top:20px;
-    font-size:22px;
-    font-weight:bold;
+button:hover {
+    background: #f0c75d;
 }
 
-#ayuda{
-    display:none;
-    margin-top:20px;
-    color:#ffd700;
-    font-size:18px;
+/* ==================================================
+   RESULTADO Y AYUDA
+   ================================================== */
+#resultado {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.correcto{
-    color:#6dff7b;
+#ayuda {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    color: #ffd700;
+    font-size: 18px;
+    box-sizing: border-box;
 }
 
-.incorrecto{
-    color:#ff6d6d;
+/* ==================================================
+   COLORES DE RESULTADO
+   ================================================== */
+.correcto {
+    color: #6dff7b;
 }
 
-@media(max-width:600px){
+.incorrecto {
+    color: #ff6d6d;
+}
 
-    #texto{
-        font-size:18px;
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+@media (max-width: 600px) {
+    #texto {
+        font-size: 18px;
     }
 
-    h1{
-        font-size:28px;
+    h1 {
+        font-size: 28px;
     }
 
-    input{
-        font-size:16px;
+    input {
+        font-size: 16px;
     }
 }
-
