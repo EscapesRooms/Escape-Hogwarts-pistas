@@ -1,0 +1,98 @@
+/* ==================================================
+   CONFIGURACIÓN GENERAL
+   ================================================== */
+body{
+    background:#111;
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    text-align:center;
+    padding:20px;
+}
+
+.contenedor{
+    max-width:800px;
+    margin:auto;
+    padding:25px;
+    border:2px solid #d4af37;
+    background:#1a1a1a;
+    border-radius:10px;
+}
+
+.logo{
+    width:140px;
+    display:block;
+    margin:auto;
+}
+
+h1{
+    margin-top:20px;
+}
+
+#texto{
+    margin-top:20px;
+    font-size:22px;
+    line-height:1.8;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    border:none;
+    border-radius:5px;
+    font-size:18px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#d4af37;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#f0c75d;
+}
+
+#resultado{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+#ayuda{
+    display:none;
+    margin-top:20px;
+    color:#ffd700;
+    font-size:18px;
+}
+
+.correcto{
+    color:#6dff7b;
+}
+
+.incorrecto{
+    color:#ff6d6d;
+}
+
+@media(max-width:600px){
+
+    #texto{
+        font-size:18px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    input{
+        font-size:16px;
+    }
+}
+
