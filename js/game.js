@@ -1,50 +1,54 @@
-
-
-
+// --------------------------------------------------
+// 1) Cargamos la pista actual desde la URL
+//    Ejemplo: ?pista=0, ?pista=1, ?pista=2
+// --------------------------------------------------
 const parametro =
-new URLSearchParams(window.location.search)
-.get("pista") || "1";
+  new URLSearchParams(window.location.search).get("pista") || "1";
 
-const datos = pistas[parametro];
+// Si la pista no existe, usamos la 1 para no romper la página
+const datos = pistas[parametro] || pistas["1"];
 
-document.getElementById("titulo").innerHTML =
-datos.titulo;
+// --------------------------------------------------
+// 2) Pintamos la pista en el HTML
+// --------------------------------------------------
+document.getElementById("titulo").innerHTML = datos.titulo;
+document.getElementById("texto").innerHTML = datos.texto;
+document.getElementById("ayuda").innerHTML = datos.ayuda;
 
-document.getElementById("texto").innerHTML =
-datos.texto;
-
-document.getElementById("ayuda").innerHTML =
-datos.ayuda;
-
-if(datos.ayuda===""){
-document.querySelector('button[onclick="mostrarAyuda()"]').style.display="none";
+// Si la pista no tiene ayuda, ocultamos el botón
+if (datos.ayuda === "") {
+  document
+    .querySelector('button[onclick="mostrarAyuda()"]')
+    .style.display = "none";
 }
 
-function normalizar(texto){
-
-return texto
-.toLowerCase()
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g,"")
-.replace(/\s+/g,"")
-.trim();
-
+// --------------------------------------------------
+// 3) Función para normalizar texto
+//    Quita mayúsculas, tildes, espacios y caracteres raros
+//    para poder comparar respuestas fácilmente
+// --------------------------------------------------
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "")
+    .trim();
 }
 
+// --------------------------------------------------
+// 4) Función para comprobar la respuesta del usuario
+// --------------------------------------------------
 function comprobar() {
-  // 1) Leemos el texto que ha escrito el usuario en el input
+  // Leemos el valor que ha escrito el usuario
   const valor = document.getElementById("respuesta").value;
 
-  // 2) Comparamos la respuesta introducida con la respuesta correcta
-  //    normalizando mayúsculas, tildes, espacios y otros caracteres
+  // Comparamos la respuesta con la solución correcta
   if (normalizar(valor) === normalizar(datos.respuesta)) {
-
-    // Si la respuesta es correcta:
     document.getElementById("resultado").className = "correcto";
 
-    // 3) Solo en la pista 0 ocultamos el texto:
-    //    "La magia ha revelado algo:"
-    //    En el resto de pistas se mantiene el mensaje completo
+    // Regla especial solo para la pista 0:
+    // en la pista 0 se omite la frase "La magia ha revelado algo"
     if (parametro === "0") {
       document.getElementById("resultado").innerHTML =
         "✅ Correcto.<br><br><strong>" +
@@ -57,38 +61,42 @@ function comprobar() {
         "</strong>";
     }
 
-    // 4) Salimos de la función para no seguir ejecutando más
-    return;
+    return; // Salimos para no seguir ejecutando la lógica
   }
 
-  // 5) Si la respuesta no coincide:
+  // Si la respuesta es incorrecta
   document.getElementById("resultado").className = "incorrecto";
   document.getElementById("resultado").innerHTML =
     "❌ La respuesta no parece correcta. Inténtalo de nuevo.";
 }
 
-const music=document.getElementById("music");
-
-function toggleMusic(){
-
-if(music.paused){
-
-music.play();
-
-}else{
-
-music.pause();
-
+// --------------------------------------------------
+// 5) Función para mostrar la ayuda
+// --------------------------------------------------
+function mostrarAyuda() {
+  document.getElementById("ayuda").style.display = "block";
 }
 
+// --------------------------------------------------
+// 6) Música de fondo
+// --------------------------------------------------
+const music = document.getElementById("music");
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
 }
 
-document.addEventListener("click",()=>{
-
-if(music.paused){
-
-music.play().catch(()=>{});
-
-}
-
-},{once:true});
+// Reproducimos la música al primer click del usuario
+document.addEventListener(
+  "click",
+  () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+    }
+  },
+  { once: true }
+);
