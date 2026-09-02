@@ -124,3 +124,45 @@ button:hover {
         font-size: 16px;
     }
 }
+
+#respuesta-coordenadas {
+    margin-top: 25px;
+}
+
+.coordenadas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    font-size: clamp(20px, 4vw, 30px);
+    line-height: 1.8;
+}
+
+.numero-coordenada {
+    width: 42px;
+    height: 48px;
+    margin: 0 2px;
+    padding: 0;
+    border: 2px solid #d4af37;
+    border-radius: 5px;
+    background: #fff;
+    color: #111;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.numero-coordenada.numero-correcto {
+    border-color: #6dff7b;
+    background: #1d7429;
+    color: #fff;
+    box-shadow: 0 0 14px #6dff7b;
+}
+
+.numero-coordenada.numero-incorrecto {
+    border-color: #ff6d6d;
+    background: #8d1f1f;
+    color: #fff;
+}
