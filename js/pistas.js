@@ -151,7 +151,8 @@ titulo:"🌊 El Susurro del Agua 🌊",
 tipo:"coordenadas",
 
 coordenadas:[
-	{texto:"4", oculto:true, respuesta:"1"},
+	{texto:"4"},
+	{texto:"1", oculto:true, respuesta:"1"},
 	{texto:"°26'32.5\"N 2°1"},
 	{texto:"0", oculto:true, respuesta:"0"},
 	{texto:"'38."},
