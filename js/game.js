@@ -16,7 +16,7 @@ document.getElementById("texto").innerHTML = datos.texto;
 document.getElementById("ayuda").innerHTML = datos.ayuda;
 
 if (datos.tipo === "coordenadas") {
-  document.getElementById("texto").innerHTML =
+  document.getElementById("texto").textContent =
     "Completa los números ocultos para descubrir la siguiente localización.";
   document.getElementById("respuesta").style.display = "none";
   document.getElementById("comprobarBtn").textContent =
@@ -90,49 +90,40 @@ function pintarCoordenadas() {
   let numeroOculto = 0;
 
   coordenadas.className = "coordenadas";
-  coordenadas.setAttribute("aria-label", "Coordenadas con números ocultos");
-
-  datos.coordenadas.forEach((parte, indice) => {
-    if (!parte.oculto) {
+  datos.coordenadas.forEach(parte => {
+    if (!parte.respuesta) {
       coordenadas.appendChild(document.createTextNode(parte.texto));
       return;
     }
 
     const entrada = document.createElement("input");
     numeroOculto++;
-
     entrada.className = "numero-coordenada";
     entrada.type = "text";
     entrada.inputMode = "numeric";
     entrada.maxLength = 1;
-    entrada.dataset.indice = indice;
     entrada.setAttribute("aria-label", `Número oculto ${numeroOculto}`);
-    entrada.addEventListener("input", () => comprobarNumero(entrada, parte.respuesta));
+    entrada.addEventListener("input", () => {
+      entrada.value = entrada.value.replace(/\D/g, "").slice(0, 1);
+      if (entrada.value === parte.respuesta) {
+        entrada.classList.remove("numero-incorrecto");
+        entrada.classList.add("numero-correcto");
+        entrada.disabled = true;
+      } else {
+        entrada.classList.remove("numero-correcto");
+        entrada.classList.toggle("numero-incorrecto", entrada.value.length > 0);
+      }
+    });
     coordenadas.appendChild(entrada);
   });
-
   contenedor.appendChild(coordenadas);
-}
-
-function comprobarNumero(entrada, respuesta) {
-  entrada.value = entrada.value.replace(/\D/g, "").slice(0, 1);
-
-  if (entrada.value === respuesta) {
-    entrada.classList.remove("numero-incorrecto");
-    entrada.classList.add("numero-correcto");
-    entrada.disabled = true;
-  } else {
-    entrada.classList.remove("numero-correcto");
-    entrada.classList.toggle("numero-incorrecto", entrada.value.length > 0);
-  }
 }
 
 function comprobarCoordenadas() {
   const entradas = document.querySelectorAll(".numero-coordenada");
-  const completas = [...entradas].every(entrada => entrada.disabled);
   const resultado = document.getElementById("resultado");
 
-  if (!completas) {
+  if (![...entradas].every(entrada => entrada.disabled)) {
     resultado.className = "incorrecto";
     resultado.textContent = "❌ Aún quedan números por descubrir.";
     return;

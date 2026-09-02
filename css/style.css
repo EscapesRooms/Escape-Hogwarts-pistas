@@ -40,6 +40,65 @@ h1 {
     line-height: 1.8;
 }
 
+#respuesta-coordenadas {
+    margin-top: 25px;
+}
+
+.coordenadas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    font-size: clamp(20px, 4vw, 30px);
+    line-height: 1.8;
+}
+
+.numero-coordenada {
+    width: 42px;
+    height: 48px;
+    margin: 0 2px;
+    padding: 0;
+    border: 2px solid #d4af37;
+    border-radius: 5px;
+    background: #fff;
+    color: #111;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.numero-coordenada.numero-correcto {
+    border-color: #6dff7b;
+    background: #1d7429;
+    color: #fff;
+    box-shadow: 0 0 14px #6dff7b;
+}
+
+.numero-coordenada.numero-incorrecto {
+    border-color: #ff6d6d;
+    background: #8d1f1f;
+    color: #fff;
+}
+
+.enlace-mapa {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #d4af37;
+    border-radius: 5px;
+    color: #ffd700;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+#resultado small {
+    display: inline-block;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 15px;
+}
+
 /* ==================================================
    INPUT Y BOTONES
    ================================================== */
@@ -52,7 +111,7 @@ button {
     margin-top: 10px;
     border: none;
     border-radius: 5px;
-    height: 48px; /* altura igual para los 3 */
+    height: 48px;
     line-height: 1.2;
     -webkit-appearance: none;
     appearance: none;
@@ -104,28 +163,6 @@ button:hover {
     color: #6dff7b;
 }
 
-.enlace-mapa {
-    display: inline-block;
-    padding: 10px 14px;
-    border: 1px solid #d4af37;
-    border-radius: 5px;
-    color: #ffd700;
-    font-size: 17px;
-    text-decoration: none;
-}
-
-.enlace-mapa:hover {
-    background: #d4af37;
-    color: #111;
-}
-
-#resultado small {
-    display: inline-block;
-    margin-top: 10px;
-    color: #fff;
-    font-size: 15px;
-}
-
 .incorrecto {
     color: #ff6d6d;
 }
@@ -145,46 +182,4 @@ button:hover {
     input {
         font-size: 16px;
     }
-}
-
-#respuesta-coordenadas {
-    margin-top: 25px;
-}
-
-.coordenadas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    color: #fff;
-    font-size: clamp(20px, 4vw, 30px);
-    line-height: 1.8;
-}
-
-.numero-coordenada {
-    width: 42px;
-    height: 48px;
-    margin: 0 2px;
-    padding: 0;
-    border: 2px solid #d4af37;
-    border-radius: 5px;
-    background: #fff;
-    color: #111;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.numero-coordenada.numero-correcto {
-    border-color: #6dff7b;
-    background: #1d7429;
-    color: #fff;
-    box-shadow: 0 0 14px #6dff7b;
-}
-
-.numero-coordenada.numero-incorrecto {
-    border-color: #ff6d6d;
-    background: #8d1f1f;
-    color: #fff;
 }
