@@ -104,6 +104,28 @@ button:hover {
     color: #6dff7b;
 }
 
+.enlace-mapa {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #d4af37;
+    border-radius: 5px;
+    color: #ffd700;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.enlace-mapa:hover {
+    background: #d4af37;
+    color: #111;
+}
+
+#resultado small {
+    display: inline-block;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 15px;
+}
+
 .incorrecto {
     color: #ff6d6d;
 }

@@ -142,7 +142,7 @@ function comprobarCoordenadas() {
   resultado.innerHTML =
     "✅ Coordenadas descubiertas.<br><br>⚡ La magia ha revelado algo:<br><br><strong>" +
     datos.destino +
-    "</strong>";
+    "</strong><br><br><a class=\"enlace-mapa\" href=\"https://www.google.com/maps/search/?api=1&query=41.442361,2.177472\" target=\"_blank\" rel=\"noopener noreferrer\">📍 Abrir coordenadas en Google Maps</a><br><small>41°26'32.5\"N 2°10'38.9\"E</small>";
 }
 
 // --------------------------------------------------
